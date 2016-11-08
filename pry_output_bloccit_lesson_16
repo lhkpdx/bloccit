@@ -1,0 +1,45 @@
+Lauras-MacBook-Pro:bloccit LHK$ rails console
+Loading development environment (Rails 4.2.5)
+[1] pry(main)> post = Post.first
+  Post Load (0.2ms)  SELECT  "posts".* FROM "posts"  ORDER BY "posts"."id" ASC LIMIT 1
+=> #<Post:0x007f9b5a4a44d8
+ id: 2,
+ title: "Changed the title",
+ body: "this is the first body",
+ created_at: Tue, 08 Nov 2016 18:45:42 UTC +00:00,
+ updated_at: Tue, 08 Nov 2016 19:06:10 UTC +00:00>
+[2] pry(main)> p post
+#<Post id: 2, title: "Changed the title", body: "this is the first body", created_at: "2016-11-08 18:45:42", updated_at: "2016-11-08 19:06:10">
+=> #<Post:0x007f9b5a4a44d8
+ id: 2,
+ title: "Changed the title",
+ body: "this is the first body",
+ created_at: Tue, 08 Nov 2016 18:45:42 UTC +00:00,
+ updated_at: Tue, 08 Nov 2016 19:06:10 UTC +00:00>
+[3] pry(main)> nesting
+Nesting status:
+--
+0. main (Pry top level)
+[4] pry(main)> cd post
+[5] pry(#<Post>):1> nesting
+Nesting status:
+--
+0. main (Pry top level)
+1. #<Post>
+[6] pry(#<Post>):1> self.title = "Changed it again!"
+=> "Changed it again!"
+[7] pry(#<Post>):1> self.body = "Thisis the first body, but the second time"
+=> "Thisis the first body, but the second time"
+[8] pry(#<Post>):1> save!
+   (0.1ms)  begin transaction
+  SQL (0.4ms)  UPDATE "posts" SET "title" = ?, "body" = ?, "updated_at" = ? WHERE "posts"."id" = ?  [["title", "Changed it again!"], ["body", "Thisis the first body, but the second time"], ["updated_at", "2016-11-08 20:07:03.703610"], ["id", 2]]
+   (0.5ms)  commit transaction
+=> true
+[9] pry(#<Post>):1> self
+=> #<Post:0x007f9b5a4a44d8
+ id: 2,
+ title: "Changed it again!",
+ body: "Thisis the first body, but the second time",
+ created_at: Tue, 08 Nov 2016 18:45:42 UTC +00:00,
+ updated_at: Tue, 08 Nov 2016 20:07:03 UTC +00:00>
+[10] pry(#<Post>):1>
