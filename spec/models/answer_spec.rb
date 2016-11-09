@@ -6,6 +6,7 @@ RSpec.describe Answer, type: :model do
 
    describe "attributes" do
      it "has a body attribute" do
+       
        expect(answer).to have_attributes(body: "Answer Body")
      end
    end
