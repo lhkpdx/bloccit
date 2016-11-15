@@ -23,6 +23,18 @@ require 'random_data'
 
   Comment.create!(post_id: post.id, body: "this is it")
 
+  20.times do
+    Advertisement.create!(
+      title:  RandomData.random_sentence,
+      body:  RandomData.random_paragraph,
+      price:  RandomData.random_price
+    )
+  end
+
+
+
+
   puts "Seed finished"
   puts "#{Post.count} posts created"
   puts "#{Comment.count} comments created"
+  puts "#{Advertisement.count} ads created"

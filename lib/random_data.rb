@@ -24,4 +24,10 @@ module RandomData
     letters.shuffle!
     letters[0,rand(3..8)].join
   end
+
+  def self.random_price
+    numbers = [25, 50, 100, 1000, 10000]
+    numbers.shuffle!
+    numbers[0]
+  end
 end
