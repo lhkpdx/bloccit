@@ -8,7 +8,7 @@ let(:my_ad) do
   body: RandomData.random_paragraph,
   price: 50
   )
- end
+end
 
   describe "GET #index" do
     it "returns http success" do
@@ -20,7 +20,7 @@ let(:my_ad) do
     # it "assigns my_ad to @advertisements" do
     #   get :index
     #
-    #   expect(assigns(:advertisments).to eq([:my_ad]))
+    #   expect(assigns(:advertisements)).to eq([:my_ad])
     # end
   end
 
