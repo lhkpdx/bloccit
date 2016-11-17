@@ -30,4 +30,10 @@ module RandomData
     numbers.shuffle!
     numbers[0]
   end
+
+  def self.random_resolved
+    values = [true, false]
+    values.shuffle!
+    values[0]
+  end
 end

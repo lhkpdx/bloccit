@@ -17,11 +17,11 @@ end
       expect(response).to have_http_status(:success)
     end
 
-    # it "assigns my_ad to @advertisements" do
-    #   get :index
-    #
-    #   expect(assigns(:advertisements)).to eq([:my_ad])
-    # end
+    it "assigns my_ad to @advertisements" do
+      get :index
+
+      expect(assigns(:advertisements)).to eq([my_ad])
+    end
   end
 
   describe "GET #show" do

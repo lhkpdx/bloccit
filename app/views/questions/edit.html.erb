@@ -1,0 +1,32 @@
+<h1>Edit Question</h1>
+
+ <div class="row">
+   <div class="col-md-4">
+     <p>Guidelines for questions</p>
+     <ul>
+       <li>Be specific if you'd like to change your question</li>
+       <li>Please be sure to mark as resolved as soon as appropriate</li>
+     </ul>
+   </div>
+   <div class="col-md-8">
+     <%= form_for @question do |q| %>
+     <div class="form-group">
+       <%= q.label :title %>
+       <%= q.text_field :title, class: 'form-control', placeholder: "Enter Question Subject" %>
+     </div>
+       <div class="form-group">
+         <%= q.label :body %>
+         <%= q.text_area :body, rows: 8, class: 'form-control', placeholder: "Original question" %>
+       </div>
+       <div class="form-check">
+         <label class="form-check-label">
+           <%= q.check_box :resolved, {}, "true", "false" %>
+            Should we mark this as resolved?
+         </label>
+       </div>
+       <div class="form-group">
+         <%= q.submit "Save", class: 'btn btn-success' %>
+       </div>
+     <% end %>
+   </div>
+ </div>
