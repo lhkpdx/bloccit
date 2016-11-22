@@ -18,19 +18,24 @@ require 'random_data'
 
  posts = Post.all
 
+ 20.times do
+   SponsoredPost.create!(
+   topic: topics.sample,
+   title: "This is a sponsored post",
+   body:  RandomData.random_paragraph,
+   price:  RandomData.random_price
+ )
+ end
+
+ sponsored_posts = SponsoredPost.all
+
  100.times do
    Comment.create!(
      post: posts.sample,
+     sponsored_post: sponsored_posts.sample,
      body: RandomData.random_paragraph
    )
  end
-
-  post = Post.find_or_create_by!(
-    title: "Laura's special post",
-    body: "Inserting only if this doesn't already exist",
-    )
-
-  Comment.create!(post_id: post.id, body: "this is it")
 
   20.times do
     Advertisement.create!(
@@ -43,5 +48,6 @@ require 'random_data'
   puts "Seed finished"
   puts "#{Topic.count} topics created"
   puts "#{Post.count} posts created"
+  puts "#{SponsoredPost.count} sponsored posts created"
   puts "#{Comment.count} comments created"
   puts "#{Advertisement.count} ads created"
