@@ -16,11 +16,7 @@ class SponsoredPostsController < ApplicationController
 
   def create
     @sponsored_post = SponsoredPost.new
-    @sponsored_post.title = params[:sponsored_post][:title]
-    @sponsored_post.body = params[:sponsored_post][:body]
-    @sponsored_post.price = params[:sponsored_post][:price]
-    @topic = Topic.find(params[:topic_id])
-    @sponsored_post.topic = @topic
+    sponsored_post_params
       if @sponsored_post.save
         flash[:notice] = "Post was saved"
         redirect_to [@topic, @sponsored_posts]
@@ -32,11 +28,7 @@ class SponsoredPostsController < ApplicationController
 
   def update
     @sponsored_post = SponsoredPost.find(params[:id])
-    @sponsored_post.title = params[:sponsored_post][:title]
-    @sponsored_post.body = params[:sponsored_post][:body]
-    @sponsored_post.price = params[:sponsored_post][:price]
-    @topic = Topic.find(params[:topic_id])
-    @sponsored_post.topic = @topic
+    sponsored_post_params
       if @sponsored_post.save
         flash[:notice] = "Post was updated."
         redirect_to [@topic, @sponsored_post]
@@ -56,4 +48,14 @@ class SponsoredPostsController < ApplicationController
            render :show
         end
       end
+
+      private
+      
+      def sponsored_post_params
+        @sponsored_post.title = params[:sponsored_post][:title]
+        @sponsored_post.body = params[:sponsored_post][:body]
+        @sponsored_post.price = params[:sponsored_post][:price]
+        @topic = Topic.find(params[:topic_id])
+        @sponsored_post.topic = @topic
+    end
 end
