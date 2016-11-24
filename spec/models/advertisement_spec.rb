@@ -9,4 +9,3 @@ RSpec.describe Advertisement, type: :model do
         end
       end
   end
-end
