@@ -19,14 +19,15 @@ require 'random_data'
  topics = Topic.all
 
  50.times do
-   Post.create!(
+   post = Post.create!(
      user:   users.sample,
      title:  RandomData.random_sentence,
      body:   RandomData.random_paragraph,
      topic:  topics.sample
    )
+    post.update_attribute(:created_at, rand(10.minutes .. 1.year).ago)
+    rand(1..5).times { post.votes.create!(value: [-1, 1].sample, user: users.sample) }
  end
-
  posts = Post.all
 
  20.times do
@@ -84,3 +85,4 @@ require 'random_data'
   puts "#{SponsoredPost.count} sponsored posts created"
   puts "#{Comment.count} comments created"
   puts "#{Advertisement.count} ads created"
+  puts "#{Vote.count} votes created"
