@@ -61,14 +61,14 @@ class TopicsController < ApplicationController
 
    def authorize_member
      unless current_user.admin? || current_user.moderator?
-       flash[:alert] = "from member"
+       flash[:alert] = "You must be an admin to do this"
        redirect_to topics_path
      end
    end
 
    def authorize_moderator
      unless current_user.admin?
-       flash[:alert] = "from moderator"
+       flash[:alert] = "You must be an admin to do this"
        redirect_to topics_path
      end
    end

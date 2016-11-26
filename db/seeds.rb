@@ -42,6 +42,7 @@ require 'random_data'
 
  100.times do
    Comment.create!(
+     user: users.sample,
      post: posts.sample,
      sponsored_post: sponsored_posts.sample,
      body: RandomData.random_paragraph
