@@ -19,6 +19,11 @@ class UsersController < ApplicationController
        user_params
     end
 
+    def show
+       @user = User.find(params[:id])
+       @posts = @user.posts.visible_to(current_user)
+    end
+
     private
 
     def user_params
@@ -28,4 +33,4 @@ class UsersController < ApplicationController
        @user.password = params[:user][:password]
        @user.password_confirmation = params[:user][:password_confirmation]
      end
-   end
+ end
