@@ -1,0 +1,21 @@
+<div class="media">
+  <div class="media-body">
+    <h4 class="media-heading">
+      <%= link_to post.title, topic_post_path(post.topic, post) %>
+    </h4>
+    <small>
+      submitted <%= time_ago_in_words(post.created_at) %> ago by <%= post.user.name %>
+      <div>
+        <%= image_tag post.user.avatar_url(24), class: "gravatar" %>
+        <%= pluralize(post.comments.count, 'comment') %>
+        <%= pluralize(post.points, 'point') %>
+        <div>(
+            <%= pluralize(post.up_votes, 'up vote') %>,
+            <%= pluralize(post.down_votes, 'down vote') %>
+            )
+
+          </div>
+      </div>
+    </small>
+  </div>
+</div>
