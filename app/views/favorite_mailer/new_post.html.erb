@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+ <html>
+   <head>
+     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+   </head>
+   <body>
+     <h4>You're now following "<%= @post.title %>",
+       and you will be notified of all comments.  If you don't wish to receive
+       further notifications, unfavorite your post.
+     </h4>
+     <p>
+     <%= link_to "View Post on site", topic_post_url(@post.topic, @post) %>
+    </body>
+ </html>
